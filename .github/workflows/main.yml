@@ -1,18 +1,11 @@
-on: [push]
+uses: actions/checkout@v4
+uses: Dylan700/sftp-upload-action@latest
 
-jobs:
-    deploy_job:
-    runs-on: ubuntu-latest
-    name: deploy
-    steps:
-        - name: Checkout
-        uses: actions/checkout@v2
-        - name: deploy file
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
-        with:
-            username: 'ubuntu'
-            server: '35.172.213.200'
-            ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }} 
-            local_path: './*'
-            remote_path: '/home/ubuntu/discord'
-            sftpArgs: '-o ConnectTimeout=5'
+with:
+  server: 35.172.213.200 
+  username: ubuntu
+  key: ${{secrets.key}}
+  passphrase: ${{secrets.passphrase}}
+  port: 22
+  uploads: |
+    ./ => ./home/ubuntu/discord
