@@ -24,7 +24,7 @@ client.on("messageCreate", function(message) {
     
     switch (comando) {
         case "ping":
-            message.reply("pong")
+            message.reply("pong XD")
             break;
         case "prueba":
             vtube.create(message)
